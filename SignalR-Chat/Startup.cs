@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SignalR_Chat.ElasticContext;
 using SignalR_Chat.Hubs;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace SignalR_Chat
         {
             services.AddSignalR();
             services.AddCors();
+            services.AddScoped<IElasticSearchService, ElasticSearchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

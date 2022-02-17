@@ -5,14 +5,11 @@ namespace SignalR_Chat.Models
 {
     public class User
     {
-        public int OrgID { get; set; }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string ConnectionID { get; set; }
-        public DateTime LogOutDate { get; set; }
-        public List<string> GroupsName { get; set; }
-
-       
-
+        public int orgid { get; set; }
+        public int userid { get; set; }
+        public string name { get; set; }
+        public string connectionid { get; set; }
+        public DateTime logoutdate { get; set; }
+        public int[] groupids { get; set; }
     }
 }

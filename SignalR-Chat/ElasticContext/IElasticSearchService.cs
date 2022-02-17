@@ -1,8 +1,17 @@
-﻿namespace SignalR_Chat.ElasticContext
+﻿using SignalR_Chat.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace SignalR_Chat.ElasticContext
 {
     public interface IElasticSearchService
     {
-        //string WriteElastic(string text);
-        //string ReadElastic(string text);
+        Task WriteMessageElastic(Message message);
+        List<Message> ReadElastic(int orgID,int userID,DateTime logOutDate);
+        User GetUserInfo(int userID, int orgID);
+        List<Message> GetUnreadMessages(DateTime logOutTime, int userID,int orgID);
+        Task WriteUserElasticAsync(User user);
+        
     }
 }
