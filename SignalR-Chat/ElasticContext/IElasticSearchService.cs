@@ -8,10 +8,10 @@ namespace SignalR_Chat.ElasticContext
     public interface IElasticSearchService
     {
         Task WriteMessageElastic(Message message);
-        List<Message> ReadElastic(int orgID,int userID,DateTime logOutDate);
         User GetUserInfo(int userID, int orgID);
         List<Message> GetUnreadMessages(DateTime logOutTime, int userID,int orgID);
         Task WriteUserElasticAsync(User user);
+        List<User> GetUsersOfGroup(int groupID,int orgID);
         
     }
 }

@@ -10,6 +10,6 @@ namespace SignalR_Chat.Models
         public string name { get; set; }
         public string connectionid { get; set; }
         public DateTime logoutdate { get; set; }
-        public int[] groupids { get; set; }
+        public List<int> groupids { get; set; }
     }
 }

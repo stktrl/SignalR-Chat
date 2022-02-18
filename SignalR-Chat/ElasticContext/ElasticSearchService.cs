@@ -20,11 +20,6 @@ namespace SignalR_Chat.ElasticContext
 
             return new ElasticClient(new ConnectionSettings(new Uri(_configuration.GetSection("ElasticsearchOptions").GetSection("Host").Value)).DefaultIndex(indexName));
         }
-        public List<Message> ReadElastic(int orgID, int userID, DateTime logOutDate)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task WriteMessageElastic(Message message)
         {
             var client  = CreateClient("ix_messages");
@@ -78,6 +73,18 @@ namespace SignalR_Chat.ElasticContext
             {
                 throw new ArgumentException("Indexleme Hatalı!");
             }
+        }
+
+        public List<User> GetUsersOfGroup(int groupID, int orgID)
+        {
+            var client = CreateClient("ix_chatusers");
+            var response = client.Search<User>(s => s
+               .Query(q => q
+               .Term(t => t.groupids,groupID) &&
+               q.Term(t => t.orgid, orgID)
+               ));
+
+            return new List<User>(response.Documents);
         }
     }
 }

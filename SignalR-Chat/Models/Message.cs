@@ -12,6 +12,7 @@ namespace SignalR_Chat.Models
         public int OrgID { get; set; }
         public List<string> Mentions { get; set; }
         public MessageType Type { get; set; }
+        public int groupID { get; set; }
 
     }
     public enum MessageType
